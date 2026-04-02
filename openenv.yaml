@@ -1,0 +1,15 @@
+name: cyber-threat-detection-env
+
+description: AI environment for detecting cyber security threats using network logs.
+
+actions:
+  - block_ip
+  - monitor
+  - allow
+
+tasks:
+  - easy
+  - medium
+  - hard
+
+reward_range: [0.0,1.0]
