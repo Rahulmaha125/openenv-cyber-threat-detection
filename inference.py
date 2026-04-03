@@ -15,7 +15,10 @@ def reset():
     return {"observation": obs}
 
 @app.post("/step")
-def step(action: str):
+def step(data: dict):
+
+    action = data["action"]
+
     obs, reward, done, info = env.step(action)
 
     return {
