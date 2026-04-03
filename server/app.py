@@ -1,8 +1,8 @@
 from fastapi import FastAPI
 from environment import CyberThreatEnv
+import uvicorn
 
 app = FastAPI()
-
 env = CyberThreatEnv()
 
 @app.get("/")
@@ -26,3 +26,9 @@ def step(data: dict):
         "reward": reward,
         "done": done
     }
+
+def main():
+    uvicorn.run(app, host="0.0.0.0", port=7860)
+
+if __name__ == "__main__":
+    main()
