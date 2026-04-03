@@ -1,20 +1,26 @@
+from fastapi import FastAPI
 from environment import CyberThreatEnv
-from baseline_agent import agent_action
+
+app = FastAPI()
 
 env = CyberThreatEnv()
 
+@app.get("/")
+def home():
+    return {"message": "Cyber Threat Detection Environment"}
+
+@app.post("/reset")
 def reset():
-    return env.reset()
-
-def step(action):
-    return env.step(action)
-
-if __name__ == "__main__":
     obs = env.reset()
-    print("Observation:", obs)
+    return {"observation": obs}
 
-    action = agent_action(obs)
+@app.post("/step")
+def step(action: str):
     obs, reward, done, info = env.step(action)
 
-    print("Action:", action)
-    print("Reward:", reward)
+    return {
+        "observation": obs,
+        "reward": reward,
+        "done": done,
+        "info": info
+    }
