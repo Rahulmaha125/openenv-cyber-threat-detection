@@ -1,6 +1,6 @@
 name: cyber-threat-detection-env
 
-description: AI environment for detecting cyber security threats using network logs.
+description: AI environment for detecting cyber security threats from network logs.
 
 entry_point: environment:CyberThreatEnv
 
@@ -8,14 +8,13 @@ observation_space:
   type: text
   key: network_log
 
-actions:
-  - block_ip
-  - monitor
-  - allow
+action_space:
+  type: discrete
+  actions:
+    - block_ip
+    - monitor
+    - allow
 
-tasks:
-  - easy
-  - medium
-  - hard
-
-reward_range: [0.0, 1.0]
+reward_range:
+  min: 0.0
+  max: 1.0
