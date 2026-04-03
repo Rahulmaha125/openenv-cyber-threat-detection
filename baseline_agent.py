@@ -1,18 +1,22 @@
 from environment import CyberThreatEnv
-import random
 
 env = CyberThreatEnv()
 
-state = env.reset()
+obs = env.reset()
 
-print("Network Log:", state)
+print("Network Log:", obs)
 
-actions = ["block_ip", "monitor", "allow"]
+log = obs["network_log"]
 
-action = random.choice(actions)
+if "failed login" in log or "brute force" in log:
+    action = "block_ip"
+elif "unusual country" in log or "password reset" in log:
+    action = "monitor"
+else:
+    action = "allow"
 
 print("Agent Action:", action)
 
-state, reward, done = env.step(action)
+obs, reward, done, info = env.step(action)
 
 print("Reward:", reward)
