@@ -1,0 +1,16 @@
+[project]
+name = "cyber-threat-detection-env"
+version = "0.1.0"
+description = "OpenEnv environment for cyber threat detection using network logs"
+authors = [
+  {name = "Rahul Tatyasaheb Mahanavar"}
+]
+
+dependencies = [
+    "fastapi",
+    "uvicorn"
+]
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
