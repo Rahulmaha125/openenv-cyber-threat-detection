@@ -1,24 +1,28 @@
-# Cyber Threat Detection OpenEnv
+---
+title: Cyber Threat Detection Env
+emoji: 🛡️
+colorFrom: blue
+colorTo: purple
+sdk: docker
+app_file: inference.py
+pinned: false
+---
 
-This project simulates a cyber security environment where an AI agent learns to detect suspicious network activity from logs.
+# Cyber Threat Detection Environment
 
-## Problem
-
-Cyber attacks such as brute force login attempts and suspicious login activities are common in modern networks. 
-
-This environment simulates these scenarios so that an AI agent can learn to take appropriate actions.
-
-## Agent Actions
-
-block_ip  
-monitor  
-allow  
+This project simulates a cybersecurity environment where an AI agent analyzes network logs and decides whether to allow or block suspicious activity.
 
 ## Tasks
 
-easy  
-medium  
-hard  
+- Detect suspicious login attempts
+- Detect brute-force attacks
+- Detect abnormal network behavior
+
+## Actions
+
+block_ip  
+monitor  
+allow
 
 ## Reward
 
@@ -35,3 +39,7 @@ block_ip
 
 Reward:
 1.0
+
+## Real World Use
+
+This environment can help train reinforcement learning agents for automated cyber threat detection in enterprise networks.
