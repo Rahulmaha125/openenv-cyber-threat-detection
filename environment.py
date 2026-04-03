@@ -14,20 +14,13 @@ class CyberThreatEnv:
 
         self.current_log = None
 
-
     def reset(self):
 
         self.current_log = random.choice(self.logs)
 
-        return self.state()
-
-
-    def state(self):
-
         return {
             "network_log": self.current_log[0]
         }
-
 
     def step(self, action):
 
@@ -40,4 +33,6 @@ class CyberThreatEnv:
 
         done = True
 
-        return self.state(), reward, done
+        return {
+            "network_log": self.current_log[0]
+        }, reward, done, {}
