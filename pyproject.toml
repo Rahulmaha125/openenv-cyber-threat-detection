@@ -1,15 +1,15 @@
 [project]
 name = "cyber-threat-detection-env"
 version = "0.1.0"
-description = "OpenEnv environment for cyber threat detection using network logs"
-authors = [
-  {name = "Rahul Tatyasaheb Mahanavar"}
-]
-
+description = "Cyber Threat Detection OpenEnv Environment"
 dependencies = [
     "fastapi",
-    "uvicorn"
+    "uvicorn",
+    "openenv-core>=0.2.0"
 ]
+
+[project.scripts]
+server = "server.app:main"
 
 [build-system]
 requires = ["setuptools"]
