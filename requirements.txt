@@ -1,2 +1,8 @@
 fastapi
 uvicorn
+openai
+numpy
+pandas
+scikit-learn
+gymnasium
+python-dotenv
