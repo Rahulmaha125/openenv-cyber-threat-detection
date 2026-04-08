@@ -6,10 +6,17 @@ from openai import OpenAI
 app = FastAPI()
 env = CyberThreatEnv()
 
-# Use LiteLLM proxy injected by validator
+# Get API key safely
+api_key = os.environ.get("API_KEY") or os.environ.get("OPENAI_API_KEY")
+
+# If no key found, set dummy key to avoid crash
+if not api_key:
+    api_key = "dummy-key"
+
+# Create OpenAI client
 client = OpenAI(
-    base_url=os.environ.get("API_BASE_URL"),
-    api_key=os.environ.get("API_KEY") or os.environ.get("OPENAI_API_KEY")
+    base_url=os.environ.get("API_BASE_URL", "https://api.openai.com/v1"),
+    api_key=api_key
 )
 
 @app.get("/")
@@ -23,6 +30,7 @@ def reset():
 
 @app.post("/step")
 def step(data: dict):
+
     action = data["action"]
 
     obs, reward, done, info = env.step(action)
