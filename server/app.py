@@ -19,7 +19,7 @@ def step(data: dict):
 
     action = data["action"]
 
-    obs, reward, done = env.step(action)
+   obs, reward, done, info = env.step(action)
 
     return {
         "observation": obs,
