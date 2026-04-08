@@ -9,7 +9,7 @@ env = CyberThreatEnv()
 # Use LiteLLM proxy injected by validator
 client = OpenAI(
     base_url=os.environ.get("API_BASE_URL"),
-    api_key=os.environ.get("API_KEY")
+    api_key=os.environ.get("API_KEY") or os.environ.get("OPENAI_API_KEY")
 )
 
 @app.get("/")
@@ -23,7 +23,6 @@ def reset():
 
 @app.post("/step")
 def step(data: dict):
-
     action = data["action"]
 
     obs, reward, done, info = env.step(action)
