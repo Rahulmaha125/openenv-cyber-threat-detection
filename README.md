@@ -1,3 +1,12 @@
+---
+title: Cyber Threat Detection Env
+emoji: 🛡️
+colorFrom: blue
+colorTo: purple
+sdk: docker
+app_file: inference.py
+pinned: false
+---
 # 🛡️ Cyber Threat Detection & SOC Monitoring System
 
 An AI-powered cybersecurity simulation platform that detects suspicious network activities and visualizes threats using a professional **Security Operations Center (SOC) dashboard**.
