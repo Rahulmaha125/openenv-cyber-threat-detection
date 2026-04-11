@@ -4,8 +4,9 @@ emoji: 🛡️
 colorFrom: blue
 colorTo: purple
 sdk: docker
-app_file: inference.py
+app_file: app.py
 pinned: false
+---
 ---
 # 🛡️ Cyber Threat Detection & SOC Monitoring System
 
