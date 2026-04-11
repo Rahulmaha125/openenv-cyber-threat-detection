@@ -1,8 +1,8 @@
 fastapi
 uvicorn
-openai
-numpy
+streamlit
 pandas
+numpy
 scikit-learn
 gymnasium
 python-dotenv
