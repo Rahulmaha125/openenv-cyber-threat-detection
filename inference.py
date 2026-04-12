@@ -16,15 +16,20 @@ client = OpenAI(
 
 def analyze_threat(log):
 
-    response = client.chat.completions.create(
-        model="gpt-4o-mini",
-        messages=[
-            {"role": "system", "content": "You are a cybersecurity threat detection AI."},
-            {"role": "user", "content": f"Analyze this network log and detect threat with explanation: {log}"}
-        ]
-    )
+    try:
+        response = client.chat.completions.create(
+            model="gpt-4o-mini",
+            messages=[
+                {"role": "system", "content": "You are a cybersecurity threat detection AI."},
+                {"role": "user", "content": f"Analyze this network log and detect threat with explanation: {log}"}
+            ]
+        )
 
-    return response.choices[0].message.content
+        return response.choices[0].message.content
+
+    except Exception as e:
+        
+        return f"Threat detected in log: {log}. (LLM unavailable)"
 
 
 def main():
