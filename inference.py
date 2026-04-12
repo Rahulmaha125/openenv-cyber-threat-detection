@@ -1,21 +1,32 @@
 import os
 from environment import CyberThreatEnv
-from explain import explain_threat
+from openai import OpenAI
 
 env = CyberThreatEnv()
 
 
+client = OpenAI(
+    base_url=os.environ["API_BASE_URL"],
+    api_key=os.environ["API_KEY"]
+)
+
+
 def analyze_threat(log):
 
-    explanation = explain_threat(log)
+    response = client.chat.completions.create(
+        model="gpt-4o-mini",
+        messages=[
+            {"role": "system", "content": "You are a cybersecurity threat detection AI."},
+            {"role": "user", "content": f"Analyze this network log and detect threat with explanation: {log}"}
+        ]
+    )
 
-    return explanation
+    return response.choices[0].message.content
 
 
 def main():
 
     observation = env.reset()
-
     log = observation["network_log"]
 
     analysis = analyze_threat(log)
