@@ -11,7 +11,7 @@ env = CyberThreatEnv()
 
 @app.get("/")
 def home():
-    # 🔥 direct working demo (no more "running")
+    
     obs = env.reset()
     log = obs["network_log"]
 
@@ -54,7 +54,7 @@ def step(data: dict):
         return {"error": str(e)}
 
 
-# 🔥 NEW: Dashboard data (lightweight version of your Streamlit UI)
+
 @app.get("/dashboard")
 def dashboard():
 
