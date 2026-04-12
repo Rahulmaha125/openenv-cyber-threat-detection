@@ -4,10 +4,13 @@ from openai import OpenAI
 
 env = CyberThreatEnv()
 
+# ✅ Safe environment handling
+api_base = os.environ.get("API_BASE_URL")
+api_key = os.environ.get("API_KEY")
 
 client = OpenAI(
-    base_url=os.environ["API_BASE_URL"],
-    api_key=os.environ["API_KEY"]
+    base_url=api_base if api_base else "https://api.openai.com/v1",
+    api_key=api_key if api_key else "dummy-key"
 )
 
 
